@@ -1,18 +1,17 @@
 <?php
 /**
- * WordPress_Sniffs_Arrays_ArrayDeclarationSpacingSniff
+ * WordPress\Sniffs\Arrays\ArrayDeclarationSpacingSniff.
  *
- * Modified for use with TMCodeStandards.
+ * Modified for use by Chromatix.
  * - Allows single-line associative arrays if they only have one element.
  * - Integrates additional indenting option `$exact`.
  *
- * @author  Tim Malone <tdmalone@gmail.com>
- * @package TMCodeStandards
+ * @author  Tim Malone <tim.malone@chromatix.com.au>
  */
 
-if ( ! class_exists( 'WordPress_Sniffs_Arrays_ArrayDeclarationSpacingSniff', true ) ) {
-  throw new PHP_CodeSniffer_Exception( 'Class WordPress_Sniffs_Arrays_ArrayDeclarationSpacingSniff not found' );
-}
+namespace Chromatix\Sniffs\Arrays;
+
+use WordPress\Sniffs\Arrays\ArrayDeclarationSpacingSniff as WPCS_ArrayDeclarationSpacingSniff;
 
 /**
  * WordPress Coding Standard.
@@ -42,7 +41,7 @@ if ( ! class_exists( 'WordPress_Sniffs_Arrays_ArrayDeclarationSpacingSniff', tru
  * Last synced with parent class October 5 2016 at commit ea32814346ecf29791de701b3fa464a9ca43f45b.
  * @link    https://github.com/squizlabs/PHP_CodeSniffer/blob/master/CodeSniffer/Standards/Squiz/Sniffs/Arrays/ArrayDeclarationSniff.php
  */
-class TMCodeStandards_Sniffs_Arrays_ArrayDeclarationSpacingSniff extends WordPress_Sniffs_Arrays_ArrayDeclarationSpacingSniff {
+class ArrayDeclarationSpacingSniff extends WPCS_ArrayDeclarationSpacingSniff {
 
   /**
    * Do the required spaces need to be exactly right?

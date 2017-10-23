@@ -2,16 +2,15 @@
 /**
  * WordPress_Sniffs_Whitespace_OperatorSpacingSniff
  *
- * Modified for use with TMCodeStandards.
+ * Modified for use by Chromatix.
  * - Integrates additional indenting option `$exact`.
  *
- * @author  Tim Malone <tdmalone@gmail.com>
- * @package TMCodeStandards
+ * @author  Tim Malone <tim.malone@chromatix.com.au>
  */
 
-if ( ! class_exists( 'WordPress_Sniffs_WhiteSpace_OperatorSpacingSniff', true ) ) {
-  throw new PHP_CodeSniffer_Exception( 'Class WordPress_Sniffs_WhiteSpace_OperatorSpacingSniff not found' );
-}
+namespace Chromatix\Sniffs\Whitespace;
+
+use WordPress\Sniffs\Whitespace\OperatorSpacingSniff as WPCS_OperatorSpacingSniff;
 
 /**
  * WordPress Coding Standard.
@@ -36,7 +35,7 @@ if ( ! class_exists( 'WordPress_Sniffs_WhiteSpace_OperatorSpacingSniff', true ) 
  * Last synced with base class December 2008 at commit f01746fd1c89e98174b16c76efd325825eb58bf1.
  * @link    https://github.com/squizlabs/PHP_CodeSniffer/blob/master/CodeSniffer/Standards/Squiz/Sniffs/WhiteSpace/OperatorSpacingSniff.php
  */
-class TMCodeStandards_Sniffs_WhiteSpace_OperatorSpacingSniff extends WordPress_Sniffs_WhiteSpace_OperatorSpacingSniff {
+class OperatorSpacingSniff extends WPCS_OperatorSpacingSniff {
 
   /**
    * Do the required spaces need to be exactly right?
