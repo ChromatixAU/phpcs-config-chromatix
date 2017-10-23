@@ -16,16 +16,20 @@ Install locally to one project:
 
     composer install chromatix/phpcs-config-chromatix
 
-You'll also need to have [phpcs](https://www.squizlabs.com/php-codesniffer) installed in the same manner.
+You'll also need to have [phpcs](https://www.squizlabs.com/php-codesniffer) installed in the same manner, and [set your phpcs `installed_paths`](https://github.com/squizlabs/PHP_CodeSniffer/wiki/Configuration-Options#setting-the-installed-standard-paths) like follows:
+
+    vendor/bin/phpcs --config-set installed_paths ../../chromatix,../../wp-coding-standards/wpcs
+
+It's probably ideal to do this in a [`post-install-cmd` script in your `composer.json`](https://getcomposer.org/doc/articles/scripts.md).
 
 ## Usage
 
 Add this to your `phpcs.xml` file:
 
-  <?xml version="1.0"?>
-  <ruleset>  
-    <rule ref="vendor/chromatix/phpcs-config-chromatix"/>
-  </ruleset>
+    <?xml version="1.0"?>
+    <ruleset>
+      <rule ref="phpcs-config-chromatix"/>
+    </ruleset>
 
 Then:
 * Using globally?  

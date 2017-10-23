@@ -49,6 +49,9 @@ script:
   - xmllint --noout ./ruleset.xml
   - diff -B ./ruleset.xml <(xmllint --format "./ruleset.xml")
 
+  # Check code standards on our custom Sniffs.
+  - composer lint
+
 notifications:
   email: false
   webhooks:

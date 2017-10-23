@@ -23,5 +23,19 @@
   ],
   "require": {
     "wp-coding-standards/wpcs": "*"
+  },
+  "scripts": {
+    "post-install-cmd": [
+      "sh -c 'if [[ $OSTYPE == linux* ]]; then php vendor/bin/phpcs --config-set installed_paths ../../wp-coding-standards/wpcs; fi'",
+      "sh -c 'if [[ $OSTYPE == darwin* ]]; then php vendor/bin/phpcs --config-set installed_paths ../../wp-coding-standards/wpcs; fi'",
+      "sh -c 'if [[ $OSTYPE == msys* ]]; then sh vendor/bin/phpcs --config-set installed_paths ../../wp-coding-standards/wpcs; fi'",
+      "sh -c 'if [[ -z $OSTYPE ]]; then sh vendor/bin/phpcs --config-set installed_paths ../../wp-coding-standards/wpcs; fi'"
+    ],
+    "lint": [
+      "sh -c 'if [[ $OSTYPE == linux* ]]; then sh vendor/bin/phpcs Sniffs/**/*.php; fi'",
+      "sh -c 'if [[ $OSTYPE == darwin* ]]; then sh vendor/bin/phpcs Sniffs/**/*.php; fi'",
+      "sh -c 'if [[ $OSTYPE == msys* ]]; then sh vendor/bin/phpcs Sniffs/**/*.php; fi'",
+      "sh -c 'if [[ -z $OSTYPE ]]; then sh vendor/bin/phpcs Sniffs/**/*.php; fi'"
+    ]
   }
 }
