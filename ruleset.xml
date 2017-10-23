@@ -1,0 +1,115 @@
+<?xml version="1.0"?>
+<ruleset name="phpcs-config-chromatix">
+
+  <!-- For help on the available options here, see
+  https://pear.php.net/manual/en/package.php.php-codesniffer.annotated-ruleset.php -->
+
+  <description>Chromatix custom config for phpcs. Based heavily on the WordPress Coding Standards but with some of our own too.</description>
+
+  <rule ref="WordPress">
+
+    <!-- Exclude some rules that we don't need, or that are otherwise already covered. -->
+
+    <!-- We now deal in spaces at Chromatix, so we need to change from the WordPress default. We
+    exclude the DisallowSpaceIndent rule here; further down in this file we set up our space rules.
+    If this work is being submitted to WordPress core/plugin repo, it will need spaces changed back
+    to tabs. See https://wiki.chromatix.com.au/Regular_expressions#Tabs_to_spaces_and_back for help
+    doing this quickly. -->
+    <exclude name="Generic.WhiteSpace.DisallowSpaceIndent"/>
+
+    <!-- Git deals with line endings for us, so we don't need to worry. -->
+    <exclude name="Generic.Files.LineEndings.InvalidEOLChar"/>
+
+    <!-- Yeah... we need to be able to concat strings! -->
+    <exclude name="Generic.Strings.UnnecessaryStringConcat.Found"/>
+
+    <!-- It's ok having a blank line after a comment, right? -->
+    <exclude name="Squiz.Commenting.InlineComment.SpacingAfter"/>
+
+    <!-- We're not using 'Batcache'. -->
+    <exclude name="WordPress.VIP.RestrictedVariables.cache_constraints"/>
+
+    <!-- This disabling pagination rule does not apply to us. -->
+    <exclude name="WordPress.VIP.PostsPerPage.posts_per_page"/>
+
+    <!-- Not wholly sure about removing this, but we're gonna need meta_key and tax_query's... -->
+    <exclude name="WordPress.VIP.SlowDBQuery.slow_db_query"/>
+
+    <!-- Removing this in favour of the stricter Zend test, added below. -->
+    <exclude name="PSR2.Files.ClosingTag.NotAllowed"/>
+
+    <!-- Removing this in favour of a lax'er Chromatix test, added below. -->
+    <exclude name="WordPress.Files.FileName.UnderscoresNotAllowed"/>
+
+  </rule> <!-- /WordPress -->
+
+  <!-- The version we have of WPCS does not yet include this rule, and we can't really yet either
+  because it seems to require a certain format for the comment - ideally we'd like to say what eg.
+  the if block was comparing, which isn't supported by this. -->
+  <!--
+  <rule ref="Squiz.Commenting.LongConditionClosingComment">
+    <properties>
+      <property name="lineLimit" value="20" />
+      <property name="commentFormat" value="// End %s" />
+    </properties>
+  </rule>
+  -->
+
+  <!-- Raise the severity of additional commenting sniffs. -->
+
+  <rule ref="Squiz.Commenting.InlineComment.NotCapital">
+    <severity>5</severity>
+    <type>warning</type>
+  </rule>
+
+  <rule ref="Squiz.Commenting.InlineComment.InvalidEndChar">
+    <severity>5</severity>
+    <type>warning</type>
+  </rule>
+
+  <!-- It would be good to add this sniff as well, but it doesn't seem to work at the moment. -->
+  <!--
+  <rule ref="Generic.Commenting.Todo.CommentFound">
+    <severity>5</severity>
+  </rule>
+  -->
+
+  <!-- Note that we also want to force spaces after commas in method calls, but there doesn't seem
+  to be a sniff for this yet. -->
+
+  <!-- Note that we also want to force a blank line before inline comments, but there doesn't seem
+  to be a sniff for this yet. -->
+
+  <!-- For some reason WPCS does not enforce the closing brace being on a new line, so, we will. -->
+  <rule ref="Squiz.WhiteSpace.ScopeClosingBrace"/>
+
+  <!-- We would also like to force a blank line after a control structure closing, but turning this
+  on also seems to turn on other rules that disallow spaces inside control structure brackets...
+  which is opposite to WPCS! -->
+  <!-- <rule ref="Squiz.WhiteSpace.ControlStructureSpacing.LineAfterClose" /> -->
+
+  <!-- WPCS sets the severity of this to 0, but it's actually quite important, so we restore the
+  default severity. -->
+  <rule ref="Squiz.ControlStructures.ControlSignature.NewlineAfterOpenBrace">
+    <severity>5</severity>
+  </rule>
+
+  <!-- Make the indentation check require the 'exact' number of spaces, not 'at least'. -->
+  <rule ref="Generic.WhiteSpace.DisallowTabIndent"/>
+  <rule ref="Generic.WhiteSpace.ScopeIndent">
+    <properties>
+      <property name="exact" value="true"/>
+      <property name="indent" value="2"/>
+      <property name="tabIndent" value="false"/>
+    </properties>
+  </rule>
+
+  <!-- Use the stricter Zend test for the closing tag, which disallows it even if HTML is present
+  in the file - better for consistency. -->
+  <rule ref="Zend.Files.ClosingTag.NotAllowed"/>
+
+  <!-- Add custom Chromatix sniffs. -->
+  <!-- implements: Chromatix.Files.FileName.UnderscoresNotAllowed -->
+  <!-- <rule ref="../parent-theme/inc/phpcs/Chromatix"/> -->
+
+</ruleset>

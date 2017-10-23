@@ -1,0 +1,27 @@
+{
+  "name":        "chromatix/phpcs-config-chromatix",
+  "description": "Chromatix custom config for phpcs. Based heavily on the WordPress Coding Standards but with some of our own too.",
+  "homepage":    "https://github.com/ChromatixAU/phpcs-config-chromatix",
+  "license":     "MIT",
+  "authors": [
+    {
+      "name": "Tim Malone",
+      "email": "tim.malone@chromatix.com.au",
+      "homepage": "https://www.chromatix.com.au"
+    }
+  ],
+  "support": {
+    "issues": "https://github.com/ChromatixAU/phpcs-config-chromatix/issues",
+    "source": "https://github.com/ChromatixAU/phpcs-config-chromatix"
+  },
+  "keywords": [
+    "phpcs",
+    "phpcs-config",
+    "wordpress",
+    "chromatix",
+    "php"
+  ],
+  "require": {
+    "wp-coding-standards/wpcs": "*"
+  }
+}

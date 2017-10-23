@@ -1,0 +1,57 @@
+language: php
+
+# We need sudo as some of our externally-called scripts may need to install packages.
+sudo: required
+
+# Speed up subsequent builds by caching dependencies.
+cache:
+  directories:
+    - vendor
+
+# Skip builds on version tags, as they'll occur on the branch anyway.
+branches:
+  except:
+    - /^v[0-9]\.[0-9]\.[0-9]/
+
+# Build against common versions.
+php:
+  - 7.0
+  - 7.1
+  - nightly
+
+# Save time by only cloning the most recent commit.
+git:
+  depth: 1
+
+matrix:
+  allow_failures:
+
+    # PHP nightly is for advisory purposes only for now; we can allow this to fail.
+    - php: nightly
+
+  # Allow build to finish before our allowed failures run.
+  fast_finish: true
+
+before_install:
+  - export XMLLINT_INDENT=" "
+
+install:
+  - travis_retry curl -s http://getcomposer.org/installer | php
+  - travis_retry php composer.phar install --dev --no-interaction
+
+script:
+
+  # Lint the PHP.
+  - travis_retry curl --fail --location https://chr-cicd.herokuapp.com/scripts/php-lint.sh | bash
+
+  # Validate XML and check the code-style consistency.
+  # @see http://xmlsoft.org/xmllint.html
+  - xmllint --noout ./ruleset.xml
+  - diff -B ./ruleset.xml <(xmllint --format "./ruleset.xml")
+
+notifications:
+  email: false
+  webhooks:
+    urls:
+      - https://chr-cicd.herokuapp.com/hooks/travis.php
+    on_start: always
