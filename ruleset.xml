@@ -26,8 +26,9 @@
     <!-- It's ok having a blank line after a comment, right? -->
     <exclude name="Squiz.Commenting.InlineComment.SpacingAfter"/>
 
-    <!-- We're not using 'Batcache'. -->
+    <!-- We're not using Batcache. -->
     <exclude name="WordPress.VIP.RestrictedVariables.cache_constraints"/>
+    <exclude name="WordPress.VIP.RestrictedVariables.cache_constraints___SERVER__REMOTE_ADDR__"/>
 
     <!-- This disabling pagination rule does not apply to us (in both its names...). -->
     <exclude name="WordPress.VIP.PostsPerPage.posts_per_page"/>
@@ -36,6 +37,7 @@
     <!-- Not wholly sure about removing these, but we're gonna need meta_key and tax_query's... -->
     <exclude name="WordPress.VIP.SlowDBQuery.slow_db_query"/>
     <exclude name="WordPress.VIP.SlowDBQuery.slow_db_query_meta_query"/>
+    <exclude name="WordPress.VIP.SlowDBQuery.slow_db_query_meta_key"/>
     <exclude name="WordPress.VIP.SlowDBQuery.slow_db_query_tax_query"/>
 
     <!-- Removing this in favour of the stricter Zend test, added below. -->
@@ -47,6 +49,9 @@
 
     <!-- Removing this until we find a sniff or option that excludes URLs. -->
     <exclude name="Squiz.Commenting.InlineComment.InvalidEndChar"/>
+
+    <!-- We're not going to insist on package tags. -->
+    <exclude name="Squiz.Commenting.FileComment.MissingPackageTag"/>
 
     <!-- Removing until we learn/implement the potential replacement functions. -->
     <exclude name="WordPress.VIP.RestrictedFunctions.file_get_contents"/>
