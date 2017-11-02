@@ -34,9 +34,9 @@ matrix:
 
 install:
 
-  - travis_retry curl -s http://getcomposer.org/installer | php
-  - travis_retry php composer.phar install --dev --no-interaction
+  - composer install --prefer-dist --no-interaction
 
+  # Install and set up xmllint.
   - sudo apt-get install libxml2-utils
   - export XMLLINT_INDENT=" "
 
@@ -45,11 +45,13 @@ script:
   # Lint the PHP.
   - travis_retry curl --fail --location https://chr-cicd.herokuapp.com/scripts/php-lint.sh | bash
 
-  # Validate XML and check the code-style consistency.
+  # Validate XML.
   # TODO: Change to https://chr-cicd.herokuapp.com/scripts/xml-lint.sh when that is ready.
   # @see http://xmlsoft.org/xmllint.html
   - xmllint --noout ./ruleset.xml
-  - diff -B ./ruleset.xml <(xmllint --format "./ruleset.xml")
+
+  # TODO: Check XML code-style consistency.
+  #- diff -B ./ruleset.xml <(xmllint --format "./ruleset.xml")
 
   # Check code standards on our custom Sniffs.
   - composer lint
