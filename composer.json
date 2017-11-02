@@ -22,7 +22,7 @@
     "php"
   ],
   "require": {
-    "wp-coding-standards/wpcs": "*"
+    "wp-coding-standards/wpcs": "0.13.1"
   },
   "scripts": {
     "post-install-cmd": [
