@@ -46,6 +46,7 @@ script:
   - travis_retry curl --fail --location https://chr-cicd.herokuapp.com/scripts/php-lint.sh | bash
 
   # Validate XML and check the code-style consistency.
+  # TODO: Change to https://chr-cicd.herokuapp.com/scripts/xml-lint.sh when that is ready.
   # @see http://xmlsoft.org/xmllint.html
   - xmllint --noout ./ruleset.xml
   - diff -B ./ruleset.xml <(xmllint --format "./ruleset.xml")

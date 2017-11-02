@@ -26,20 +26,39 @@
     <!-- It's ok having a blank line after a comment, right? -->
     <exclude name="Squiz.Commenting.InlineComment.SpacingAfter"/>
 
-    <!-- We're not using 'Batcache'. -->
+    <!-- We're not using Batcache. -->
     <exclude name="WordPress.VIP.RestrictedVariables.cache_constraints"/>
+    <exclude name="WordPress.VIP.RestrictedVariables.cache_constraints___SERVER__REMOTE_ADDR__"/>
 
-    <!-- This disabling pagination rule does not apply to us. -->
+    <!-- This disabling pagination rule does not apply to us (in both its names...). -->
     <exclude name="WordPress.VIP.PostsPerPage.posts_per_page"/>
+    <exclude name="WordPress.VIP.PostsPerPage.posts_per_page_posts_per_page"/>
 
-    <!-- Not wholly sure about removing this, but we're gonna need meta_key and tax_query's... -->
+    <!-- Not wholly sure about removing these, but we're gonna need meta_key and tax_query's... -->
     <exclude name="WordPress.VIP.SlowDBQuery.slow_db_query"/>
+    <exclude name="WordPress.VIP.SlowDBQuery.slow_db_query_meta_query"/>
+    <exclude name="WordPress.VIP.SlowDBQuery.slow_db_query_meta_key"/>
+    <exclude name="WordPress.VIP.SlowDBQuery.slow_db_query_tax_query"/>
 
     <!-- Removing this in favour of the stricter Zend test, added below. -->
     <exclude name="PSR2.Files.ClosingTag.NotAllowed"/>
 
-    <!-- Removing this in favour of a lax'er Chromatix test, added below. -->
+    <!-- Removing these in favour of a lax'er Chromatix test, added below. -->
+    <exclude name="WordPress.Files.FileName.NotHyphenatedLowercase"/>
     <exclude name="WordPress.Files.FileName.UnderscoresNotAllowed"/>
+
+    <!-- Removing this until we find a sniff or option that excludes URLs. -->
+    <exclude name="Squiz.Commenting.InlineComment.InvalidEndChar"/>
+
+    <!-- We're not going to insist on package tags. -->
+    <exclude name="Squiz.Commenting.FileComment.MissingPackageTag"/>
+
+    <!-- Removing until we learn/implement the potential replacement functions. -->
+    <exclude name="WordPress.VIP.RestrictedFunctions.file_get_contents"/>
+    <exclude name="WordPress.VIP.RestrictedFunctions.file_get_contents_file_get_contents"/>
+    <exclude name="WordPress.WP.AlternativeFunctions.file_get_contents"/>
+    <exclude name="WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents"/>
+    <exclude name="WordPress.WP.AlternativeFunctions.file_system_read_file_get_contents"/>
 
   </rule> <!-- /WordPress -->
 
@@ -62,10 +81,13 @@
     <type>warning</type>
   </rule>
 
+  <!-- Currently excluded above. -->
+  <!--
   <rule ref="Squiz.Commenting.InlineComment.InvalidEndChar">
     <severity>5</severity>
     <type>warning</type>
   </rule>
+  -->
 
   <!-- It would be good to add this sniff as well, but it doesn't seem to work at the moment. -->
   <!--
@@ -109,7 +131,32 @@
   <rule ref="Zend.Files.ClosingTag.NotAllowed"/>
 
   <!-- Add custom Chromatix sniffs. -->
-  <!-- implements: Chromatix.Files.FileName.UnderscoresNotAllowed -->
-  <!-- <rule ref="../parent-theme/inc/phpcs/Chromatix"/> -->
+
+  <!--
+  <rule ref="phpcs_config_chromatix.Arrays.ArrayDeclarationSpacing">
+    <properties>
+      <property name="exact" value="false"/>
+    </properties>
+  </rule>
+  -->
+
+  <!--
+  <rule ref="phpcs_config_chromatix.Functions.FunctionCallSignature">
+    <properties>
+      <property name="indent" value="2"/>
+      <property name="exact" value="false"/>
+      <property name="requiredSpacesAfterOpen" value="1"/>
+      <property name="requiredSpacesBeforeClose" value="1"/>
+    </properties>
+  </rule>
+  -->
+
+  <!--
+  <rule ref="phpcs_config_chromatix.Whitespace.OperatorSpacing">
+    <properties>
+      <property name="exact" value="false"/>
+    </properties>
+  </rule>
+  -->
 
 </ruleset>

@@ -22,20 +22,15 @@
     "php"
   ],
   "require": {
-    "wp-coding-standards/wpcs": "*"
+    "wp-coding-standards/wpcs": "0.13.1"
   },
   "scripts": {
+    "lint": "find . -type d \\( -name '.git' -o -name 'vendor' -o -name 'node_modules' \\) -prune -o -type f -name '*.php' -print | xargs phpcs",
     "post-install-cmd": [
       "sh -c 'if [[ $OSTYPE == linux* ]]; then php vendor/bin/phpcs --config-set installed_paths ../../wp-coding-standards/wpcs; fi'",
       "sh -c 'if [[ $OSTYPE == darwin* ]]; then php vendor/bin/phpcs --config-set installed_paths ../../wp-coding-standards/wpcs; fi'",
       "sh -c 'if [[ $OSTYPE == msys* ]]; then sh vendor/bin/phpcs --config-set installed_paths ../../wp-coding-standards/wpcs; fi'",
       "sh -c 'if [[ -z $OSTYPE ]]; then sh vendor/bin/phpcs --config-set installed_paths ../../wp-coding-standards/wpcs; fi'"
-    ],
-    "lint": [
-      "sh -c 'if [[ $OSTYPE == linux* ]]; then sh vendor/bin/phpcs Sniffs/**/*.php; fi'",
-      "sh -c 'if [[ $OSTYPE == darwin* ]]; then sh vendor/bin/phpcs Sniffs/**/*.php; fi'",
-      "sh -c 'if [[ $OSTYPE == msys* ]]; then sh vendor/bin/phpcs Sniffs/**/*.php; fi'",
-      "sh -c 'if [[ -z $OSTYPE ]]; then sh vendor/bin/phpcs Sniffs/**/*.php; fi'"
     ]
   }
 }
