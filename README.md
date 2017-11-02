@@ -6,6 +6,8 @@ Based heavily on the [WordPress Coding Standards](https://github.com/WordPress-C
 
 **This config is still in development.** If you have suggestions for improvement or if you disagree with anything this config makes you do, feel free to file an issue.
 
+_Writing PHP code outside of the WordPress context? We still use WordPress standards, but obviously without the need for using WordPress-specific functions. See [phpcs-config-chromatix-no-wordpress](https://github.com/ChromatixAU/phpcs-config-chromatix-no-wordpress)._
+
 ## Installation
 
 Install globally to use on any project:
@@ -32,14 +34,22 @@ Add this to your `phpcs.xml` file:
     </ruleset>
 
 Then:
+
 * Using globally?  
-  Run `phpcs **/*.php`.
+  Run `phpcs *.php`.
 
 * Using locally?  
-  Run `vendor/bin/phpcs **/*.php`
+  Run `vendor/bin/phpcs *.php`
+
+You'll probably find it more useful to add a script to your `composer.json`:
+
+    "scripts": {
+      "lint": "find . -type d \\( -name '.git' -o -name 'vendor' -o -name 'node_modules' \\) -prune -o -type f -name '*.php' -print | xargs phpcs"
+    }
 
 ## See also
 
+* [phpcs-config-chromatix-no-wordpress](https://github.com/ChromatixAU/phpcs-config-chromatix-no-wordpress)
 * [eslint-config-chromatix](https://github.com/ChromatixAU/eslint-config-chromatix)
 * [stylelint-config-chromatix](https://github.com/ChromatixAU/stylelint-config-chromatix)
 
