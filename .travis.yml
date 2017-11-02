@@ -32,12 +32,13 @@ matrix:
   # Allow build to finish before our allowed failures run.
   fast_finish: true
 
-before_install:
-  - export XMLLINT_INDENT=" "
-
 install:
+
   - travis_retry curl -s http://getcomposer.org/installer | php
   - travis_retry php composer.phar install --dev --no-interaction
+
+  - apt-get install libxml2-utils
+  - export XMLLINT_INDENT=" "
 
 script:
 
