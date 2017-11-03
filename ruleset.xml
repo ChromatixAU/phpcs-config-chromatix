@@ -126,6 +126,12 @@
     </properties>
   </rule>
 
+
+  <!-- Temporary exclusions due to isse #6. -->
+  <exclude name="Generic.WhiteSpace.ScopeIndent.IncorrectExact"/>
+  <exclude name="WordPress.Arrays.ArrayIndentation.ItemNotAligned"/>
+  <exclude name="WordPress.Arrays.ArrayIndentation.MultiLineArrayItemNotAligned"/>
+
   <!-- Use the stricter Zend test for the closing tag, which disallows it even if HTML is present
   in the file - better for consistency. -->
   <rule ref="Zend.Files.ClosingTag.NotAllowed"/>
