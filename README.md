@@ -6,13 +6,13 @@ Based heavily on the [WordPress Coding Standards](https://github.com/WordPress-C
 
 **This config is still in development.** If you have suggestions for improvement or if you disagree with anything this config makes you do, feel free to file an issue.
 
-_Writing PHP code outside of the WordPress context? We still use WordPress standards, but obviously without the need for using WordPress-specific functions. See [phpcs-config-chromatix-no-wordpress](https://github.com/ChromatixAU/phpcs-config-chromatix-no-wordpress)._
+_**Writing PHP outside of the WordPress context?** We still use WordPress standards, but obviously without the need for using WordPress-specific functions. See [phpcs-config-chromatix-no-wordpress](https://github.com/ChromatixAU/phpcs-config-chromatix-no-wordpress)._
 
 ## Installation
 
 Install globally to use on any project:
 
-    composer install --global chromatix/phpcs-config-chromatix
+    composer global install chromatix/phpcs-config-chromatix
 
 Install locally to one project:
 
@@ -22,7 +22,7 @@ You'll also need to have [phpcs](https://www.squizlabs.com/php-codesniffer) inst
 
     vendor/bin/phpcs --config-set installed_paths ../../chromatix,../../wp-coding-standards/wpcs
 
-It's probably ideal to do this in a [`post-install-cmd` script in your `composer.json`](https://getcomposer.org/doc/articles/scripts.md).
+It's probably ideal to do this in a [`post-install-cmd` script in your `composer.json`](https://getcomposer.org/doc/articles/scripts.md); see this package's [composer.json](composer.json) for an example of a cross-platform way to do so (it might look a bit complicated, but unfortunately is required... at least in our testing so far, anyway!).
 
 ## Usage
 
@@ -35,17 +35,21 @@ Add this to your `phpcs.xml` file:
 
 Then:
 
-* Using globally?  
-  Run `phpcs *.php`.
+* **Using globally?**
 
-* Using locally?  
+  Run `phpcs *.php`
+
+* **Using locally?**
+
   Run `vendor/bin/phpcs *.php`
 
-You'll probably find it more useful to add a script to your `composer.json`:
+  Alternatively, you'll probably find it useful to add a script to your `composer.json`:
 
-    "scripts": {
-      "lint": "find . -type d \\( -name '.git' -o -name 'vendor' -o -name 'node_modules' \\) -prune -o -type f -name '*.php' -print | xargs phpcs"
-    }
+      "scripts": {
+        "lint": "find . -type d \\( -name '.git' -o -name 'vendor' -o -name 'node_modules' \\) -prune -o -type f -name '*.php' -print | xargs vendor/bin/phpcs"
+      }
+
+  Then you can just run `composer lint`.
 
 ## See also
 
