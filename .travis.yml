@@ -34,7 +34,9 @@ matrix:
 
 install:
 
-  - composer install --prefer-dist --no-interaction
+  # Install Composer dependencies.
+  # Disabled for now, see https://github.com/ChromatixAU/phpcs-config-chromatix/issues/6
+  #- composer install --prefer-dist --no-interaction
 
   # Install and set up xmllint.
   - sudo apt-get install libxml2-utils
@@ -54,7 +56,8 @@ script:
   #- diff -B ./ruleset.xml <(xmllint --format "./ruleset.xml")
 
   # Check code standards on our custom Sniffs.
-  - composer lint
+  # Disabled for now, see https://github.com/ChromatixAU/phpcs-config-chromatix/issues/6
+  #- composer lint
 
 notifications:
   email: false
