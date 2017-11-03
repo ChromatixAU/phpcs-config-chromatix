@@ -60,6 +60,10 @@
     <exclude name="WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents"/>
     <exclude name="WordPress.WP.AlternativeFunctions.file_system_read_file_get_contents"/>
 
+    <!-- Temporary exclusions due to isse #6. -->
+    <exclude name="WordPress.Arrays.ArrayIndentation.ItemNotAligned"/>
+    <exclude name="WordPress.Arrays.ArrayIndentation.MultiLineArrayItemNotAligned"/>
+
   </rule> <!-- /WordPress -->
 
   <!-- The version we have of WPCS does not yet include this rule, and we can't really yet either
@@ -120,17 +124,11 @@
   <rule ref="Generic.WhiteSpace.DisallowTabIndent"/>
   <rule ref="Generic.WhiteSpace.ScopeIndent">
     <properties>
-      <property name="exact" value="true"/>
+      <property name="exact" value="false"/> <!-- Needs to be true, but temporarily false due to #6. -->
       <property name="indent" value="2"/>
       <property name="tabIndent" value="false"/>
     </properties>
   </rule>
-
-
-  <!-- Temporary exclusions due to isse #6. -->
-  <exclude name="Generic.WhiteSpace.ScopeIndent.IncorrectExact"/>
-  <exclude name="WordPress.Arrays.ArrayIndentation.ItemNotAligned"/>
-  <exclude name="WordPress.Arrays.ArrayIndentation.MultiLineArrayItemNotAligned"/>
 
   <!-- Use the stricter Zend test for the closing tag, which disallows it even if HTML is present
   in the file - better for consistency. -->
