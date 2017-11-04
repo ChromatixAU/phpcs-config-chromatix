@@ -60,9 +60,12 @@
     <exclude name="WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents"/>
     <exclude name="WordPress.WP.AlternativeFunctions.file_system_read_file_get_contents"/>
 
-    <!-- Temporary exclusions due to isse #6. -->
+    <!-- Temporary exclusions due to issue #6. -->
     <exclude name="WordPress.Arrays.ArrayIndentation.ItemNotAligned"/>
     <exclude name="WordPress.Arrays.ArrayIndentation.MultiLineArrayItemNotAligned"/>
+
+    <!-- Removing due to incorrect indentation, until we rewrite our custom sniff to replace. -->
+    <exclude name="PEAR.Functions.FunctionCallSignature.Indent"/>
 
   </rule> <!-- /WordPress -->
 
