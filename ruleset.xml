@@ -87,6 +87,19 @@
     <type>warning</type>
   </rule>
 
+  <rule ref="WordPress.Files.FileName">
+
+    <!-- Exclude filename checks for tests, which follow the PHPUnit naming conventions. -->
+    <exclude-pattern>*/tests/*</exclude-pattern>
+
+    <!-- Allow theme-specific filenames. -->
+    <!-- @see https://github.com/WordPress-Coding-Standards/WordPress-Coding-Standards/wiki/Customizable-sniff-properties#themes-allow-filename-exceptions -->
+    <properties>
+      <property name="is_theme" value="true" />
+    </properties>
+
+  </rule>
+
   <!-- For some reason WPCS does not enforce the closing brace being on a new line, so, we will. -->
   <rule ref="Squiz.WhiteSpace.ScopeClosingBrace"/>
 
