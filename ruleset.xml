@@ -73,6 +73,14 @@
 
   </rule> <!-- /WordPress -->
 
+  <!-- Enforce line length limits. -->
+  <rule ref="Generic.Files.LineLength">
+    <properties>
+      <property name="lineLimit" value="100"/>
+      <property name="absoluteLineLimit" value="100"/>
+    </properties>
+  </rule>
+
   <!-- Raise the severity of additional commenting sniffs. -->
   <rule ref="Squiz.Commenting.InlineComment.NotCapital">
     <severity>5</severity>
