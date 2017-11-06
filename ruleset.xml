@@ -70,6 +70,7 @@
     <exclude name="WordPress.Arrays.ArrayIndentation.ItemNotAligned"/>
     <exclude name="WordPress.Arrays.ArrayIndentation.MultiLineArrayItemNotAligned"/>
     <exclude name="PEAR.Functions.FunctionCallSignature.Indent"/>
+    <exclude name="PSR2.ControlStructures.SwitchDeclaration.BreakIndent"/>
 
   </rule> <!-- /WordPress -->
 
