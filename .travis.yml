@@ -36,7 +36,7 @@ install:
 
   # Install Composer dependencies.
   # Disabled for now, see https://github.com/ChromatixAU/phpcs-config-chromatix/issues/6
-  #- composer install --prefer-dist --no-interaction
+  #- travis_retry composer install --prefer-dist --no-interaction
 
 script:
 
