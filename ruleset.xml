@@ -50,6 +50,9 @@
     <exclude name="WordPress.Files.FileName.NotHyphenatedLowercase"/>
     <exclude name="WordPress.Files.FileName.UnderscoresNotAllowed"/>
 
+    <!-- Removing in favour of the opposite, added below via Squiz, to have parity with JS code. -->
+    <exclude name="PSR2.ControlStructures.ElseIfDeclaration"/>
+
     <!-- We're not going to insist on package tags. -->
     <exclude name="Squiz.Commenting.FileComment.MissingPackageTag"/>
 
@@ -87,6 +90,9 @@
     <severity>5</severity>
     <type>warning</type>
   </rule>
+
+  <!-- Added instead of the PSR2 rule, excluded above, to have parity with JS code. -->
+  <rule ref="Squiz.ControlStructures.ElseIfDeclaration"/>
 
   <rule ref="WordPress.Files.FileName">
 
