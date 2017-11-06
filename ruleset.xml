@@ -50,75 +50,37 @@
     <exclude name="WordPress.Files.FileName.NotHyphenatedLowercase"/>
     <exclude name="WordPress.Files.FileName.UnderscoresNotAllowed"/>
 
-    <!-- Removing this until we find a sniff or option that excludes URLs. -->
-    <exclude name="Squiz.Commenting.InlineComment.InvalidEndChar"/>
-
     <!-- We're not going to insist on package tags. -->
     <exclude name="Squiz.Commenting.FileComment.MissingPackageTag"/>
 
-    <!-- Removing until we learn/implement the potential replacement functions. -->
+    <!-- TEMPORARY EXCLUSIONS DUE TO ISSUES -->
+
+    <!-- TODO: Removed until we find a sniff or option that excludes URLs. This rule is also
+               customised below. -->
+    <exclude name="Squiz.Commenting.InlineComment.InvalidEndChar"/>
+
+    <!-- TODO: Removed until we learn/implement the potential replacement functions. -->
     <exclude name="WordPress.VIP.RestrictedFunctions.file_get_contents"/>
     <exclude name="WordPress.VIP.RestrictedFunctions.file_get_contents_file_get_contents"/>
     <exclude name="WordPress.WP.AlternativeFunctions.file_get_contents"/>
     <exclude name="WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents"/>
     <exclude name="WordPress.WP.AlternativeFunctions.file_system_read_file_get_contents"/>
 
-    <!-- Temporary exclusions due to issue #6. -->
+    <!-- TODO: Removed due to incorrect indentation problems (issue #1). -->
     <exclude name="WordPress.Arrays.ArrayIndentation.ItemNotAligned"/>
     <exclude name="WordPress.Arrays.ArrayIndentation.MultiLineArrayItemNotAligned"/>
-
-    <!-- Removing due to incorrect indentation, until we rewrite our custom sniff to replace. -->
     <exclude name="PEAR.Functions.FunctionCallSignature.Indent"/>
 
   </rule> <!-- /WordPress -->
 
-  <!-- The version we have of WPCS does not yet include this rule, and we can't really yet either
-  because it seems to require a certain format for the comment - ideally we'd like to say what eg.
-  the if block was comparing, which isn't supported by this. -->
-  <!--
-  <rule ref="Squiz.Commenting.LongConditionClosingComment">
-    <properties>
-      <property name="lineLimit" value="20" />
-      <property name="commentFormat" value="// End %s" />
-    </properties>
-  </rule>
-  -->
-
   <!-- Raise the severity of additional commenting sniffs. -->
-
   <rule ref="Squiz.Commenting.InlineComment.NotCapital">
     <severity>5</severity>
     <type>warning</type>
   </rule>
 
-  <!-- Currently excluded above. -->
-  <!--
-  <rule ref="Squiz.Commenting.InlineComment.InvalidEndChar">
-    <severity>5</severity>
-    <type>warning</type>
-  </rule>
-  -->
-
-  <!-- It would be good to add this sniff as well, but it doesn't seem to work at the moment. -->
-  <!--
-  <rule ref="Generic.Commenting.Todo.CommentFound">
-    <severity>5</severity>
-  </rule>
-  -->
-
-  <!-- Note that we also want to force spaces after commas in method calls, but there doesn't seem
-  to be a sniff for this yet. -->
-
-  <!-- Note that we also want to force a blank line before inline comments, but there doesn't seem
-  to be a sniff for this yet. -->
-
   <!-- For some reason WPCS does not enforce the closing brace being on a new line, so, we will. -->
   <rule ref="Squiz.WhiteSpace.ScopeClosingBrace"/>
-
-  <!-- We would also like to force a blank line after a control structure closing, but turning this
-  on also seems to turn on other rules that disallow spaces inside control structure brackets...
-  which is opposite to WPCS! -->
-  <!-- <rule ref="Squiz.WhiteSpace.ControlStructureSpacing.LineAfterClose" /> -->
 
   <!-- WPCS sets the severity of this to 0, but it's actually quite important, so we restore the
   default severity. -->
@@ -130,7 +92,7 @@
   <rule ref="Generic.WhiteSpace.DisallowTabIndent"/>
   <rule ref="Generic.WhiteSpace.ScopeIndent">
     <properties>
-      <property name="exact" value="false"/> <!-- Needs to be true, but temporarily false due to #6. -->
+      <property name="exact" value="false"/> <!-- TODO: Should be true, but false due to #1. -->
       <property name="indent" value="2"/>
       <property name="tabIndent" value="false"/>
     </properties>
@@ -140,7 +102,45 @@
   in the file - better for consistency. -->
   <rule ref="Zend.Files.ClosingTag.NotAllowed"/>
 
-  <!-- Add custom Chromatix sniffs. -->
+  <!-- TODO: The version we have of WPCS does not yet include this rule, and we can't really yet
+       either because it seems to require a certain format for the comment - ideally we'd like to
+       say what eg. the if block was comparing, which isn't supported by this. -->
+  <!--
+  <rule ref="Squiz.Commenting.LongConditionClosingComment">
+    <properties>
+      <property name="lineLimit" value="20" />
+      <property name="commentFormat" value="// End %s" />
+    </properties>
+  </rule>
+  -->
+
+  <!-- TODO: Excluded further above due to not excluding URLs. -->
+  <!--
+  <rule ref="Squiz.Commenting.InlineComment.InvalidEndChar">
+    <severity>5</severity>
+    <type>warning</type>
+  </rule>
+  -->
+
+  <!-- TODO: It would be good to add this sniff as well, but it doesn't seem to work yet. -->
+  <!--
+  <rule ref="Generic.Commenting.Todo.CommentFound">
+    <severity>5</severity>
+  </rule>
+  -->
+
+  <!-- TODO: We would also like to force a blank line after a control structure closing, but
+             turning this on also seems to turn on other rules that disallow spaces inside control
+             structure brackets... which is opposite to WPCS! -->
+  <!-- <rule ref="Squiz.WhiteSpace.ControlStructureSpacing.LineAfterClose" /> -->
+
+  <!-- TODO: We also want to force spaces after commas in method calls, but there doesn't seem to be
+             a sniff for this yet. -->
+
+  <!-- TODO: We also want to force a blank line before inline comments, but there doesn't seem to be
+            a sniff for this yet. -->
+
+  <!-- TODO: Add custom Chromatix sniffs. -->
 
   <!--
   <rule ref="phpcs_config_chromatix.Arrays.ArrayDeclarationSpacing">
