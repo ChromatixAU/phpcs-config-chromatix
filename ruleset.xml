@@ -23,8 +23,11 @@
     <!-- Yeah... we need to be able to concat strings! -->
     <exclude name="Generic.Strings.UnnecessaryStringConcat.Found"/>
 
-    <!-- It's ok having a blank line after a comment, right? -->
+    <!-- Blank lines are ok after comments, control structures, and case/defaults, right? -->
     <exclude name="Squiz.Commenting.InlineComment.SpacingAfter"/>
+    <exclude name="WordPress.WhiteSpace.ControlStructureSpacing.BlankLineAfterEnd"/>
+    <exclude name="PSR2.ControlStructures.SwitchDeclaration.BodyOnNextLineCASE"/>
+    <exclude name="PSR2.ControlStructures.SwitchDeclaration.BodyOnNextLineDEFAULT"/>
 
     <!-- We're not using Batcache. -->
     <exclude name="WordPress.VIP.RestrictedVariables.cache_constraints"/>
