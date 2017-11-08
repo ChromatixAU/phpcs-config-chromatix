@@ -75,6 +75,9 @@
     <exclude name="PEAR.Functions.FunctionCallSignature.Indent"/>
     <exclude name="PSR2.ControlStructures.SwitchDeclaration.BreakIndent"/>
 
+    <!-- TODO: Sort out data validation on Attributes and URL's only, not for plain HTML output -->
+    <exclude name="WordPress.XSS.EscapeOutput.OutputNotEscaped"/>
+
   </rule> <!-- /WordPress -->
 
   <!-- Enforce line length limits. -->
