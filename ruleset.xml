@@ -160,11 +160,6 @@
   </rule>
   -->
 
-  <!-- TODO: We would also like to force a blank line after a control structure closing, but
-             turning this on also seems to turn on other rules that disallow spaces inside control
-             structure brackets... which is opposite to WPCS! -->
-  <!-- <rule ref="Squiz.WhiteSpace.ControlStructureSpacing.LineAfterClose" /> -->
-
   <!-- TODO: We also want to force spaces after commas in method calls, but there doesn't seem to be
              a sniff for this yet. -->
 
