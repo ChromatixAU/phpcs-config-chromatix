@@ -133,6 +133,13 @@
   in the file - better for consistency. -->
   <rule ref="Zend.Files.ClosingTag.NotAllowed"/>
 
+  <!-- Hook names with forward slash namespacing are becoming a thing, so we should allow that. -->
+  <rule ref="WordPress.NamingConventions.ValidHookName">
+    <properties>
+      <property name="additionalWordDelimiters" value="/"/>
+    </properties>
+  </rule>
+
   <!-- TODO: The version we have of WPCS does not yet include this rule, and we can't really yet
        either because it seems to require a certain format for the comment - ideally we'd like to
        say what eg. the if block was comparing, which isn't supported by this. -->
