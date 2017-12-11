@@ -65,6 +65,8 @@
     <!-- TODO: Removed until we learn/implement the potential replacement functions. -->
     <exclude name="WordPress.VIP.RestrictedFunctions.file_get_contents"/>
     <exclude name="WordPress.VIP.RestrictedFunctions.file_get_contents_file_get_contents"/>
+    <exclude name="WordPress.VIP.RestrictedFunctions.get_adjacent_post_get_next_post"/>
+    <exclude name="WordPress.VIP.RestrictedFunctions.get_adjacent_post_get_previous_post"/>
     <exclude name="WordPress.WP.AlternativeFunctions.file_get_contents"/>
     <exclude name="WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents"/>
     <exclude name="WordPress.WP.AlternativeFunctions.file_system_read_file_get_contents"/>
