@@ -80,6 +80,9 @@
     <!-- TODO: Sort out data validation on Attributes and URL's only, not for plain HTML output -->
     <exclude name="WordPress.XSS.EscapeOutput"/>
 
+    <!-- TODO: This is a new rule added in phpcs 3.2.0 which is cropping up in some of our work. Need to work out why it's not working the way we would expect, or perhaps we decide to leave it disabled. See https://travis-ci.com/ChromatixAU/chromatix-cicd/jobs/102599138 as an example of a build that failed because of this. -->
+    <exclude name="PEAR.Functions.FunctionCallSignature.OpeningIndent"/>
+
   </rule> <!-- /WordPress -->
 
   <!-- Enforce line length limits. -->
