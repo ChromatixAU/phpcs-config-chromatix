@@ -23,6 +23,9 @@
     <!-- Yeah... we need to be able to concat strings! -->
     <exclude name="Generic.Strings.UnnecessaryStringConcat.Found"/>
 
+    <!-- Remove empty line not required before block comment -->
+    <exclude name="Squiz.Commenting.BlockComment.NoEmptyLineBefore"/>
+
     <!-- Blank lines are ok after comments, control structures, and case/defaults, right? -->
     <exclude name="Squiz.Commenting.InlineComment.SpacingAfter"/>
     <exclude name="WordPress.WhiteSpace.ControlStructureSpacing.BlankLineAfterEnd"/>
@@ -166,11 +169,11 @@
   -->
 
   <!-- TODO: It would be good to add this sniff as well, but it doesn't seem to work yet. -->
-  <!--
+
   <rule ref="Generic.Commenting.Todo.CommentFound">
     <severity>5</severity>
   </rule>
-  -->
+
 
   <!-- TODO: We also want to force spaces after commas in method calls, but there doesn't seem to be
              a sniff for this yet. -->
