@@ -168,7 +168,6 @@
   </rule>
   -->
 
-  <!-- TODO: It would be good to add this sniff as well, but it doesn't seem to work yet. -->
 
   <rule ref="Generic.Commenting.Todo.CommentFound">
     <severity>5</severity>
