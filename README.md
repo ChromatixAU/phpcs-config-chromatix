@@ -12,11 +12,11 @@ _**Writing PHP outside of the WordPress context?** We still use WordPress standa
 
 Install globally to use on any project:
 
-    composer global install chromatix/phpcs-config-chromatix
+    composer global require chromatix/phpcs-config-chromatix
 
 Install locally to one project:
 
-    composer install chromatix/phpcs-config-chromatix
+    composer require chromatix/phpcs-config-chromatix
 
 You'll also need to have [phpcs](https://www.squizlabs.com/php-codesniffer) installed in the same manner, and [set your phpcs `installed_paths`](https://github.com/squizlabs/PHP_CodeSniffer/wiki/Configuration-Options#setting-the-installed-standard-paths) like follows:
 
