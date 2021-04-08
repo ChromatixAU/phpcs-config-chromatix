@@ -15,9 +15,7 @@ branches:
 
 # Build against common versions.
 php:
-  - 7.0
-  - 7.1
-  - nightly
+  - 7.4  
 
 # Save time by only cloning the most recent commit.
 git:
